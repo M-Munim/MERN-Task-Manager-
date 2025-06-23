@@ -1,11 +1,11 @@
-export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = "http://localhost:8000";
 
 // utils/apiPaths.js
 export const API_PATHS = {
     AUTH: {
         LOGIN: "/api/auth/login",
         REGISTER: "/api/auth/register",
-        GET_PROFILE: "/api/auth/profile",]
+        GET_PROFILE: "/api/auth/profile",
     },
 
     USERS: {
