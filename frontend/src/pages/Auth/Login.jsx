@@ -28,6 +28,11 @@ const Login = () => {
     setError(null);
 
     // Perform login logic here
+    try {
+
+    } catch (error) {
+
+    }
   };
 
   return <AuthLayout>

@@ -13,7 +13,7 @@ import PrivateRoute from './routes/PrivateRoute.jsx'
 
 const App = () => {
   return (
-    <div className='bg-red-100 '>
+    <div className=' '>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login />} />
