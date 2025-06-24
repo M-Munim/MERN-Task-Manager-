@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AuthLayout from '../../components/layouts/AuthLayout'
 import { validateEmail } from '../../utils/helper';
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
 import Input from '../../components/Inputs/Input';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATHS } from '../../utils/apiPaths';
+import { UserContext } from '../../context/userContext';
+import uploadImage from '../../utils/uploadImage';
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -12,10 +16,18 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [adminInviteToken, setAdminInviteToken] = useState("");
 
+  const { updateUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
   const [error, setError] = useState(null);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    console.log(fullName, email, password, adminInviteToken);
+
+    let profileImageUrl = "";
 
     if (!fullName) {
       setError('Please enter your full name.');
@@ -35,6 +47,40 @@ const SignUp = () => {
     setError(null);
 
     // Perform sign-up logic here
+    try {
+      // upload profile image if exists
+      if (profilePic) {
+        const imgUploadRes = await uploadImage(profilePic);
+        profileImageUrl = imgUploadRes.imageUrl || "";
+      }
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: fullName,
+        email,
+        password,
+        adminInviteToken,
+        profileImageUrl
+      })
+
+      const { token, role } = response.data;
+
+      if (token) {
+        localStorage.setItem('token', token);
+        updateUser(response.data);
+
+        // redirect based on role
+        if (role === 'admin') {
+          navigate('/admin/dashboard');
+        } else {
+          navigate('/user/dashboard');
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    }
   };
 
   return (
@@ -51,7 +97,7 @@ const SignUp = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <Input
               value={fullName}
-              onChange={(target) => setFullName(target.value)}
+              onChange={({ target }) => setFullName(target.value)}
               label="Full Name"
               placeholder="Jhon"
               type="text"
@@ -66,15 +112,15 @@ const SignUp = () => {
             />
             <Input
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={({ target }) => setPassword(target.value)}
               label='Password'
               type='password'
               placeholder='Password'
             />
 
             <Input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={adminInviteToken}
+              onChange={({ target }) => setAdminInviteToken(target.value)}
               label='Admin Invite Token'
               type='text'
               placeholder='6 digit token'
