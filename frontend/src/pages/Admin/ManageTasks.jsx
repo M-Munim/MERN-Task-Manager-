@@ -23,6 +23,8 @@ const ManageTasks = () => {
         }
       });
 
+      console.log(response.data.tasks);
+
       setAllTasks(response.data?.tasks?.length > 0 ? response.data.tasks : []);
 
       // map statusSummary data with fixed labels and order
@@ -115,6 +117,7 @@ const ManageTasks = () => {
             createdAt={item.createdAt}
             dueDate={item.dueDate}
             assignedTo={item.assignedTo?.map((item) => item.profileImageUrl)}
+            user={item.assignedTo} // instead of just .map(...)
             attachmentCount={item.attachments?.length || 0}
             completedTodoCount={item.completedTodoCount || 0}
             todoChecklist={item.todoChecklist || []}

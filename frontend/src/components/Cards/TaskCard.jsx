@@ -6,7 +6,7 @@ import moment from 'moment';
 import Progresss from '../Progresss';
 
 
-const TaskCard = ({ title, description, priority, status, progress, createdAt, dueDate, assignedTo, attachmentCount, completedTodoCount, todoChecklist, onClick }) => {
+const TaskCard = ({ title, description, priority, status, progress, createdAt, dueDate, assignedTo, attachmentCount, completedTodoCount, todoChecklist, user, onClick }) => {
 
     const getStatusTagColor = () => {
         switch (status) {
@@ -90,7 +90,8 @@ const TaskCard = ({ title, description, priority, status, progress, createdAt, d
             </div>
 
             <div className='flex items-center justify-between mt-3'>
-                <AvatarGroup avatars={assignedTo || []} />
+                <AvatarGroup avatars={assignedTo} />
+                <p className='text-xs text-gray-500 font-medium'>{user[0].name}</p>
 
                 {attachmentCount > 0 && (
                     <div className='flex items-center gap-2 bg-blue-50 px-2.5 py-1.5 rounded-lg'>
