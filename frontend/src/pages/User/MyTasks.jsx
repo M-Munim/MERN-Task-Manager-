@@ -102,6 +102,7 @@ const MyTasks = () => {
             priority={item.priority}
             status={item.status}
             progress={item.progress}
+            user={item.assignedTo}
             createdAt={item.createdAt}
             dueDate={item.dueDate}
             assignedTo={item.assignedTo?.map((item) => item.profileImageUrl)}

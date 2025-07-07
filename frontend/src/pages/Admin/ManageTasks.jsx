@@ -23,7 +23,7 @@ const ManageTasks = () => {
         }
       });
 
-      console.log(response.data.tasks);
+      // console.log(response.data.tasks);
 
       setAllTasks(response.data?.tasks?.length > 0 ? response.data.tasks : []);
 
