@@ -11,6 +11,7 @@ import MyTasks from './pages/User/MyTasks.jsx'
 import ViewTaskDetails from './pages/User/ViewTaskDetails.jsx'
 import PrivateRoute from './routes/PrivateRoute.jsx'
 import UserProvider, { UserContext } from './context/userContext.jsx'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   return (
@@ -41,6 +42,17 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </div>
+
+      <Toaster
+        toastOptions={{
+          className: '',
+          style: {
+            border: '1px solid #713f12',
+            padding: '16px',
+            color: '#713f12',
+          },
+        }}
+      />
     </UserProvider>
   )
 }

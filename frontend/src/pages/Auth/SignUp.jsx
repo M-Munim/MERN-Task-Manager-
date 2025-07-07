@@ -25,7 +25,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    console.log(fullName, email, password, adminInviteToken);
+    // console.log(fullName, email, password, adminInviteToken);
 
     let profileImageUrl = "";
 

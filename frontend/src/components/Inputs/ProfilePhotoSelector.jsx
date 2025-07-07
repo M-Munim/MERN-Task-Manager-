@@ -39,12 +39,12 @@ const ProfilePhotoSelector = ({ image, setImage }) => {
         {!image ? (
             <div className='w-20 h-20 flex justify-center items-center bg-blue-100/50 rounded-full relative cursor-pointer'>
                 <LuUser className='text-4xl text-primary' />
-                <bottom
+                <button
                     type='button'
                     className="w-8 h-8 flex justify-center items-center bg-primary rounded-full absolute -bottom-1 -right-1 text-white cursor-pointer"
                     onClick={onChooseFile}>
                     <LuUpload />
-                </bottom>
+                </button>
             </div>
         ) : (
             <div className='relative'>
