@@ -3,7 +3,7 @@ import React from 'react'
 import AvatarGroup from '../AvatarGroup';
 import { LuPaperclip } from 'react-icons/lu';
 import moment from 'moment';
-import Progress from '../Cards/Progress.jsx';
+import Progress from '../progress';
 
 
 const TaskCard = ({ title, description, priority, status, progress, createdAt, dueDate, assignedTo, attachmentCount, completedTodoCount, todoChecklist, onClick }) => {
