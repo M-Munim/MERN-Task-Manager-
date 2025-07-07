@@ -95,12 +95,14 @@ const Login = () => {
 
         <p className=''>
           Don&apos;t have an account?{' '}
-          <Link
+          {/* <Link
             className='font-medium text-blue-600 underline'
             to='/signUp'
           >
             Sign Up
-          </Link>
+          </Link> */}
+
+          <p className='font-medium text-blue-600 underline'>Contact Admin</p>
         </p>
       </form>
     </div>
