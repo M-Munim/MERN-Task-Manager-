@@ -3,7 +3,7 @@ import React from 'react'
 import AvatarGroup from '../AvatarGroup';
 import { LuPaperclip } from 'react-icons/lu';
 import moment from 'moment';
-import Progress from '../progress';
+import Progresss from '../Progresss';
 
 
 const TaskCard = ({ title, description, priority, status, progress, createdAt, dueDate, assignedTo, attachmentCount, completedTodoCount, todoChecklist, onClick }) => {
@@ -69,7 +69,7 @@ const TaskCard = ({ title, description, priority, status, progress, createdAt, d
                     {completedTodoCount}/{todoChecklist.length || 0}
                 </span>
             </p>
-            <Progress progress={progress} status={status} />
+            <Progresss progress={progress} status={status} />
         </div>
 
         <div className='px-4'>
