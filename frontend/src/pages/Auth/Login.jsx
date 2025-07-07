@@ -88,7 +88,7 @@ const Login = () => {
 
         <button
           type='submit'
-          className='btn-primary'
+          className='btn-primary cursor-pointer'
         >
           Login
         </button>
