@@ -24,7 +24,7 @@ app.use(express.json());
 connectDB();
 
 app.get('/', (req, res) => {
-    res.send('API is running');
+    res.status(200).send('<h1>Welcome to My Node.js API!</h1><p>This API serves user data. Use the /api/users endpoint to interact with the user resources.</p>');
 });
 
 // Routes

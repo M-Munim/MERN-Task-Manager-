@@ -1,4 +1,4 @@
-export const BASE_URL = "https://mern-task-manager-seven-pi.vercel.app";
+export const BASE_URL = "https://taskmanagerbe.vercel.app";
 // 2:14:59
 
 // utils/apiPaths.js
