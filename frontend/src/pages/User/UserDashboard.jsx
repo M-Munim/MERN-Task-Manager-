@@ -51,6 +51,7 @@ const UserDashboard = () => {
   const getDashboardData = async () => {
     try {
       const response = await axiosInstance.get(API_PATHS.TASKS.GET_USER_DASHBOARD_DATA);
+      console.log(response.data);
 
       if (response.data) {
         setDashboardData(response.data);
@@ -110,7 +111,7 @@ const UserDashboard = () => {
         <InfoCard
           // icon={<IoMdCard />}
           label="Completed Tasks"
-          value={addThousandSeparator(dashboardData?.charts?.taskDistribution?.Pending || 0)}
+          value={addThousandSeparator(dashboardData?.charts?.taskDistribution?.completedTasks || 0)}
           color="bg-lime-500"
         />
       </div>
