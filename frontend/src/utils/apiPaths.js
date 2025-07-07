@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8000";
+export const BASE_URL = "https://mern-task-manager-seven-pi.vercel.app";
 // 2:14:59
 
 // utils/apiPaths.js

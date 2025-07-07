@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware to handle CORS
 app.use(cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -22,6 +22,10 @@ app.use(express.json());
 
 // Connect to MongoDB
 connectDB();
+
+app.get('/', (req, res) => {
+    res.send('API is running');
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
