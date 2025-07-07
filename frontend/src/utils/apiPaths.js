@@ -1,5 +1,5 @@
 // export const BASE_URL = "http://localhost:8000";
-export const BASE_URL = "https://mern-task-manager-be.onrender.com";
+export const BASE_URL = "https://mern-task-manager-be.vercel.app";
 
 // utils/apiPaths.js
 export const API_PATHS = {
